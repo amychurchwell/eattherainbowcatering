@@ -1,0 +1,16 @@
+---
+layout: base
+---
+
+<section class="page">
+  {{ content }}
+  {{ site.data.menu.notes }}
+  <ul>
+    {% for item in site.data.menu %}
+    <li>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.ingredients }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

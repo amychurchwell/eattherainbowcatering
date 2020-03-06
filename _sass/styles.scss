@@ -1,4 +1,17 @@
-.current {
-    color: pink;
-    font-weight: 600;
+@import
+  "normalize",
+  "components/header",
+  "components/navigation",
+  "components/menu"
+;
+
+/* Global.
+/* ---------------------- */
+
+body {
+    font-family: sans-serif;
+}
+
+main {
+    display: block;
 }
