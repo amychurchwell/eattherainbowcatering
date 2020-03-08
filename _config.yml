@@ -4,11 +4,13 @@ description: >- # this means to ignore newlines until "baseurl:"
   Healthy, wholesome, and uniquely delicious plant-based vegan catering and meals. Serving the Portland, Oregon area.
 baseurl: ""
 url: "http://eattherainbowcatering.com"
-twitter_username: jekyllrb
 github_username:  amychurchwell
 
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+
+data_dir: data
 
 sass:
   sass_dir: _sass

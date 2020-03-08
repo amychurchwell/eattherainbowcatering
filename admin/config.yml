@@ -6,7 +6,11 @@ media_folder: "assets/images"
 collections:
 - name: menu
   label: menu
-  folder: "_data"
-  fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
-      - {label: "Title", name: "title", widget: "string"}
+  files:
+    - label: "Menu"
+      name: "menu"
+      file: "data/menu.yml"
+      widget: list
+      fields:
+        - {label: Name, name: name, widget: string}
+        - {label: Ingredients, name: ingredients, widget: string}
