@@ -1,12 +1,14 @@
 @import
+  "lib",
   "normalize",
   "components/header",
   "components/navigation",
-  "components/menu"
+  "layouts/menu",
+  "layouts/about"
 ;
 
-/* Global.
 /* ---------------------- */
+/* Global. */ 
 
 body {
     font-family: sans-serif;
@@ -14,4 +16,18 @@ body {
 
 main {
     display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ---------------------- */
+/* Layout */
+
+.page {
+  box-sizing: border-box;
+  padding: 0 30px;
+  margin: 0 auto;
+  width: 75%;
 }

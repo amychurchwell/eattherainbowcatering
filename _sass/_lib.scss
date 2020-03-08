@@ -1,0 +1,31 @@
+$color-background-dark: black;
+
+$color-background: black;
+$color-text-primary: red;
+$color-text-secondary: blue;
+
+$color-red: red;
+$color-blue: blue;
+$color-yellow: #fbeeca;
+$color-green: green;
+$color-pink: #f9e0fa;
+
+/* ---------------------- */
+/* Hero. */
+
+.hero {
+    width: 75%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    overflow: auto;
+
+    .hero-img {
+        float: left;
+    }
+
+    .hero-copy {
+        width: 50%;
+        float: right;
+        padding: 35px;
+    }
+}

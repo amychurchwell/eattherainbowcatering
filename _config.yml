@@ -7,12 +7,18 @@ url: "http://eattherainbowcatering.com"
 twitter_username: jekyllrb
 github_username:  amychurchwell
 
-# Build settings
 plugins:
   - jekyll-feed
+
 sass:
   sass_dir: _sass
   style: compact
+
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

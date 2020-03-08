@@ -1,0 +1,14 @@
+.about-section1 {
+    background: $color-yellow;
+    min-height: 400px;
+    padding: 5px 10px;
+
+    p {
+        float: right;
+        text-align: left;
+    }
+
+    img {
+        float: left;
+    }
+}

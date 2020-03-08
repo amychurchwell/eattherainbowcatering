@@ -2,9 +2,9 @@
 layout: base
 ---
 
-<section class="page">
-  {{ content }}
-  {{ site.data.menu.notes }}
+{{ content }}
+{{ site.data.menu.notes }}
+<div class="menu">
   <ul>
     {% for item in site.data.menu %}
     <li>
@@ -13,4 +13,4 @@ layout: base
     </li>
     {% endfor %}
   </ul>
-</section>
+</div>

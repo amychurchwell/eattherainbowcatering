@@ -1,4 +1,10 @@
 header {
-    background: black;
-    color: white;
+    background: $color-background-dark;
+    text-align: center;
+    color: pink;
+    padding: 20px 0 33px 0;
+
+    h1 {
+        margin: 0;
+    }
 }

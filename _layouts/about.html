@@ -1,0 +1,18 @@
+---
+layout: base
+---
+
+{% assign image_files = site.static_files | where: "image", true %}
+
+<section class="about-section1">
+  <div class="hero">
+    <div class="hero-copy">
+      <p>{{ content }}</p>
+    </div>
+    <div class="hero-img">
+      {% for myimage in image_files %} 
+        <img src="{{ myimage.path }}">
+      {% endfor %}
+    </div>
+  </div>
+</section>

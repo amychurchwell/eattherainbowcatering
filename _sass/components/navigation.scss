@@ -1,11 +1,16 @@
 nav {
-    background: gray;
     text-align: center;
+    padding: 20px 0;
 
     ul {
+        margin: 0;
+        text-align: center;
+        
         li {
             display: inline-block;
             list-style: none;
+            margin-right: 35px;
+            text-transform: uppercase;
         }
     }
 }
