@@ -2,4 +2,5 @@
 layout: default
 title: Home
 ---
-<h2>{{ "Hello World!" | downcase }}</h2>
+Hello world!\
+Healthy, wholesome, and uniquely delicious plant-based catering and meals in the Portland, OR area.
