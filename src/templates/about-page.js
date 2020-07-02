@@ -2,12 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import Features from '../components/Features'
+import { HTMLContent } from '../components/Content'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
-
-  return (
+export const AboutPageTemplate = ({ title, intro }) => (
     <section className="section section--gradient">
       <div className="container">
         <div className="columns">
@@ -16,14 +14,13 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
-              <PageContent className="content" content={content} />
+              <Features gridItems={intro.blurbs} />
             </div>
           </div>
         </div>
       </div>
     </section>
   )
-}
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
@@ -32,21 +29,25 @@ AboutPageTemplate.propTypes = {
 }
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
       <AboutPageTemplate
         contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
+        title={frontmatter.title}
+        intro={frontmatter.intro}
       />
     </Layout>
   )
 }
 
 AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.object,
+    }),
+  }),
 }
 
 export default AboutPage
@@ -57,6 +58,18 @@ export const aboutPageQuery = graphql`
       html
       frontmatter {
         title
+        intro {
+          blurbs {
+            image {
+              childImageSharp {
+                fluid(maxWidth: 240, quality: 64) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            text
+          }
+        }
       }
     }
   }
