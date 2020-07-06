@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import instagram from '../img/social/instagram.svg'
-import logo from '../img/logo.svg'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -42,7 +41,7 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Eat the Rainbow Catering" style={{ width: '88px' }} />
+              <h3 className="has-text-weight-semibold is-size-4">Eat the Rainbow Catering</h3>
             </Link>
             {/* Hamburger menu */}
             <div
