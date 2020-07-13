@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Features from '../components/Features'
+import List from '../components/List'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const MenuPageTemplate = ({
@@ -10,9 +10,7 @@ export const MenuPageTemplate = ({
   title,
   heading,
   description,
-  intro,
-  main,
-  fullImage,
+  menu,
 }) => (
   <div className="content">
     <div
@@ -21,74 +19,30 @@ export const MenuPageTemplate = ({
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`,
+        backgroundPosition: `bottom left`,
+        backgroundAttachment: `fixed`,
       }}
     >
       <h2
-        className="has-text-weight-bold is-size-1"
+        className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
         style={{
-          boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
-          backgroundColor: '#f40',
+          boxShadow:
+            '#000000 0.5rem 0px 0px, #000000 -0.5rem 0px 0px',
+          backgroundColor: '#000000',
           color: 'white',
-          padding: '1rem',
+          lineHeight: '1',
+          padding: '0.25em',
         }}
       >
         {title}
       </h2>
     </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-7 is-offset-1">
-              <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
-              <p>{description}</p>
-            </div>
-          </div>
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <Features gridItems={intro.blurbs} />
-              <div className="columns">
-                <div className="column is-7">
-                  <h3 className="has-text-weight-semibold is-size-3">
-                    {main.heading}
-                  </h3>
-                  <p>{main.description}</p>
-                </div>
-              </div>
-              <div className="tile is-ancestor">
-                <div className="tile is-vertical">
-                  <div className="tile">
-                    <div className="tile is-parent is-vertical">
-                      <article className="tile is-child">
-                        <PreviewCompatibleImage imageInfo={main.image1} />
-                      </article>
-                    </div>
-                    <div className="tile is-parent">
-                      <article className="tile is-child">
-                        <PreviewCompatibleImage imageInfo={main.image2} />
-                      </article>
-                    </div>
-                  </div>
-                  <div className="tile is-parent">
-                    <article className="tile is-child">
-                      <PreviewCompatibleImage imageInfo={main.image3} />
-                    </article>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="full-width-image-container"
-                style={{
-                  backgroundImage: `url(${
-                    fullImage.childImageSharp
-                      ? fullImage.childImageSharp.fluid.src
-                      : fullImage
-                  })`,
-                }}
-              />
-            </div>
-          </div>
-        </div>
+    <section className="section">
+      <div className="container has-text-centered">
+        <h3 className="has-text-weight-semibold is-size-3">
+          {heading}
+        </h3>
+        <List listItems={menu.items} />
       </div>
     </section>
   </div>
@@ -98,18 +52,9 @@ MenuPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
+  menu: PropTypes.shape({
+    items: PropTypes.array,
   }),
-  main: PropTypes.shape({
-    heading: PropTypes.string,
-    description: PropTypes.string,
-    image1: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    image2: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    image3: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  }),
-  fullImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 }
 
 const MenuPage = ({ data }) => {
@@ -121,10 +66,7 @@ const MenuPage = ({ data }) => {
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
-        main={frontmatter.main}
-        fullImage={frontmatter.full_image}
+        menu={frontmatter.menu}
       />
     </Layout>
   )
@@ -153,9 +95,8 @@ export const MenuPageQuery = graphql`
           }
         }
         heading
-        description
-        intro {
-          blurbs {
+        menu {
+          items {
             image {
               childImageSharp {
                 fluid(maxWidth: 240, quality: 64) {
@@ -163,50 +104,8 @@ export const MenuPageQuery = graphql`
                 }
               }
             }
-            text
-          }
-          heading
-          description
-        }
-        main {
-          heading
-          description
-          image1 {
-            alt
-            image {
-              childImageSharp {
-                fluid(maxWidth: 526, quality: 92) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          image2 {
-            alt
-            image {
-              childImageSharp {
-                fluid(maxWidth: 526, quality: 92) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          image3 {
-            alt
-            image {
-              childImageSharp {
-                fluid(maxWidth: 1075, quality: 72) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-        full_image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            title
+            description
           }
         }
       }
